@@ -110,7 +110,6 @@ class HandleLink(HTMLParser):
             url = url.split("?")[0]
             # Conditionally download image
             filetype = get_filetype(url)
-            print(filetype)
             if is_valid_type(filetype) and not url in seen:
                 seen.add(url)
                 download_image(url, self.savedir, filetype)
@@ -132,6 +131,8 @@ parser.add_argument('-p', dest="savedir", metavar='PATH', type=str, default="./d
 # Main
 if __name__ == "__main__":
     args = parser.parse_args()
+
+    response = requests.get(args.url)
 
     Path(args.savedir).mkdir(parents=True, exist_ok=True)
     if args.recursive:

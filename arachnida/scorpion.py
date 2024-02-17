@@ -19,6 +19,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     for path in args.img:
+        print()
         # Open image
         try:
             img = Image.open(path)
@@ -36,5 +37,7 @@ if __name__ == "__main__":
 
         # Print metadata
         for tag, value in exif_data:
-            print(f"- {ExifTags.TAGS[tag]} : {value}")
-        print()
+            try:
+                print(f"- {ExifTags.TAGS[tag]} : {value}")
+            except:
+                pass
