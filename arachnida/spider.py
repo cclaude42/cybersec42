@@ -36,7 +36,7 @@ def get_savepath(url, savedir, filetype):
         savepath = Path(savedir) / f"{filename.stem}-{n}.{filetype}"
         n += 1
 
-    return f"{str(savepath)}.{filetype}"
+    return str(savepath)
 
 def download_image(url, savedir, filetype):
     savepath = get_savepath(url, savedir, filetype)
