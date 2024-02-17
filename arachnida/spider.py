@@ -29,11 +29,11 @@ def is_valid_type(type):
 
 def get_savepath(url, savedir, filetype):
     filename = Path(url.split('/')[-1])
-    savepath = Path(savedir) / filename.stem
+    savepath = Path(savedir) / f"{filename.stem}.{filetype}"
 
     n = 1
     while savepath.exists():
-        savepath = Path(savedir) / f"{filename.stem}-{n}"
+        savepath = Path(savedir) / f"{filename.stem}-{n}.{filetype}"
         n += 1
 
     return f"{str(savepath)}.{filetype}"
